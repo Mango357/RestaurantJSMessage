@@ -159,7 +159,15 @@ const scheduleCronstyle2 = () => {
     console.log('测试发送通知', count);
     Messageing();
     count++;
-  });
+  }).cancel;
+
+  // 定义规则
+  let rule = new schedule.RecurrenceRule();
+  rule.hour = [14, 15]; // 每天0点和12点开始推送   
+
+  schedule.scheduleJob(rule, () => { });
+
+
 }
 
 bootstrap();
