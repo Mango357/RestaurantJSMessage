@@ -121,17 +121,18 @@ async function bootstrap() {
   await initDB();
   app.listen(port, () => {
     console.log("启动成功", port);
+    scheduleCronstyle2()
   });
 }
 
 async function Messageing() {
   const users = await Users.findAll();
-  // console.log("All users:", JSON.stringify(users, null, 2));
+  console.log("All users:", JSON.stringify(users, null, 2));
   users.forEach((v, i) => {
     const openid = v.opneid;
     if (openid) {
       sendapi(openid);
-      // console.log(`表中的第${i}个`, openid);
+      console.log(`表中的第${i}个`, openid);
     }
   })
 }
@@ -164,4 +165,4 @@ const scheduleCronstyle2 = () => {
 bootstrap();
 // Messageing();
 scheduleCronstyle()
-scheduleCronstyle2()
+
