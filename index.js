@@ -143,7 +143,7 @@ const scheduleCronstyle = () => {
   schedule.scheduleJob('0 0 10 * * *', () => {
     // console.log('scheduleCronstyle:' + new Date());
     Messageing();
-  });
+  }).cancel;
 
   // schedule.scheduleJob('10 * * * * *', () => {
   //   console.log('scheduleCronstyle:' + new Date());
@@ -164,13 +164,17 @@ const scheduleCronstyle2 = () => {
   // 定义规则
   let rule = new schedule.RecurrenceRule();
   rule.hour = [14, 15]; // 每天0点和12点开始推送   
+  schedule.scheduleJob(rule, () => { }).cancel;
 
-  schedule.scheduleJob(rule, () => { });
 
+  let rule1 = new schedule.RecurrenceRule();
+  rule1.dayOfWeek = [1, 2, 3, 4, 5, 6, 7];
+  rule1.hour = [10]; // 每天0点和12点开始推送   
+  rule1.minute = [0];
+  schedule.scheduleJob(rule1, () => { });
 
 }
 
 bootstrap();
-// Messageing();
 scheduleCronstyle()
 
