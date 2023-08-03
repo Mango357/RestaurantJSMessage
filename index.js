@@ -100,7 +100,7 @@ async function sendapi(openid) {
           thing3: {
             value: "签到奖励提醒",
           },
-          phrase1: {
+          thing1: {
             value: "未签到"
           },
           thing7: {
