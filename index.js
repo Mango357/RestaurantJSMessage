@@ -39,6 +39,12 @@ app.post("/api/count", async (req, res) => {
   });
 });
 
+app.get("/test", async function (req, res) {
+  const { openid } = req.query;
+  const info = await sendapi(openid);
+  res.send(info);
+})
+
 app.post("/send", async function (req, res) {
   const { openid } = req.query // 通过get参数形式指定openid
   // 在这里直接是触发性发送，也可以自己跟业务做绑定，改成事件性发送
