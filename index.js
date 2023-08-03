@@ -145,6 +145,17 @@ const scheduleCronstyle = () => {
 }
 
 
+const scheduleCronstyle2 = () => {
+  //每天的早上十点钟定时执行一次: 
+  let count = 1;
+  schedule.scheduleJob('0 3 * * * *', () => {
+    console.log('测试发送通知', count);
+    Messageing();
+    count++;
+  });
+}
+
 bootstrap();
 // Messageing();
 scheduleCronstyle()
+scheduleCronstyle2()
